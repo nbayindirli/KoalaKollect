@@ -5,15 +5,28 @@ pragma solidity ^0.8.24;
 
 interface IKoalaKollectV1 {
 
+    /**
+     * Used to register a new creator.
+     */
+    function registerCreator() external;
+
+    /**
+     * Creates a new pool.
+     */
     function createPool() external;
 
     /**
      * Prematurely closes a pool and refunds all koalas.
      */
-    function closePoolBeforeExpiry() external;
+    function closePoolBeforeExpiry(uint256 poolId) external;
 
     /**
      * Used to register a new koala (funder).
      */
-    function register() external;
+    function registerKoala() external;
+
+    /**
+     * Used by koalas (funders) to fund a pool
+     */
+    function fundPool(uint256 poolId, uint256 fundAmount) external;
 }

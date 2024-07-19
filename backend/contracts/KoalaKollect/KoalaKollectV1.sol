@@ -13,26 +13,45 @@ contract KoalaKollectV1 is
     KoalaKollectV1Admin,
     KoalaKollectV1Events,
     KoalaKollectV1Modifiers,
-    KoalaKollectV1Storage,
     IKoalaKollectV1
 {
     constructor() AdminControl(msg.sender) payable {}
 
-    function createPool() external override {
+    /**
+     * Used to register a new creator.
+     */
+    function registerCreator() external override {
         // TODO: Implement
     }
 
     /**
-     * Prematurely closes a pool and refunds all koalas.
+     * Creates a new pool.
      */
-    function closePoolBeforeExpiry() external override {
+    function createPool() external override onlyRegisteredCreator() {
+        // TODO: Implement
+    }
+
+    /**
+     * Prematurely closes a pool and refund all koalas.
+     */
+    function closePoolBeforeExpiry(uint256 poolId) external override {
         // TODO: Implement
     }
 
     /**
      * Used to register a new koala (funder).
      */
-    function register() external override {
+    function registerKoala() external override {
+        // TODO: Implement
+    }
+
+    /**
+     * Used by koalas (funders) to fund a pool.
+     */
+    function fundPool(
+        uint256 poolId,
+        uint256 fundAmount
+    ) external override onlyRegisteredKoala() {
         // TODO: Implement
     }
 
