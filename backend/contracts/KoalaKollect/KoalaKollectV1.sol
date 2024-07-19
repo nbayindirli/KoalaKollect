@@ -18,6 +18,24 @@ contract KoalaKollectV1 is
 {
     constructor() AdminControl(msg.sender) payable {}
 
+    function createPool() external override {
+        // TODO: Implement
+    }
+
+    /**
+     * Prematurely closes a pool and refunds all koalas.
+     */
+    function closePoolBeforeExpiry() external override {
+        // TODO: Implement
+    }
+
+    /**
+     * Used to register a new koala (funder).
+     */
+    function register() external override {
+        // TODO: Implement
+    }
+
     fallback() external payable {}
     receive() external payable {}
 }
