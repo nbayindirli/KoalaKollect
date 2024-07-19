@@ -7,6 +7,8 @@ import "../../util/AdminControl.sol";
 
 abstract contract KoalaKollectV1Storage is AdminControl {
 
+    address public authority;
+
     struct Pool {
         uint256 id;
         address creator;

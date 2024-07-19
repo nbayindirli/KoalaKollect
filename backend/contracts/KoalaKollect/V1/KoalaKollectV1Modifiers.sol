@@ -14,4 +14,9 @@ abstract contract KoalaKollectV1Modifiers is KoalaKollectV1Storage {
         if (!isRegisteredKoala[msg.sender]) revert RegisteredKoalaOnly(msg.sender);
         _;
     }
+
+    modifier onlyAuthority() {
+        if (msg.sender != authority) revert OnlyAuthority(msg.sender);
+        _;
+    }
 }

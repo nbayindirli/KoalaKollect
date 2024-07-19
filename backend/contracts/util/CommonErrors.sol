@@ -5,7 +5,8 @@ abstract contract CommonErrors {
     error AddressExpected();
     error OnlyAdmin();
     error OnlyAdminCandidate();
+    error OnlyAuthority(address);
     error PoolNotActive(uint256 id);
-    error RegisteredCreatorOnly(address creator);
-    error RegisteredKoalaOnly(address koala);
+    error RegisteredCreatorOnly(address);
+    error RegisteredKoalaOnly(address);
 }
