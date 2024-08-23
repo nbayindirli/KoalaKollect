@@ -26,6 +26,7 @@ const config: HardhatUserConfig = {
     },
     networks: {
         /* Testnet */
+        SEPOLIA: NETWORK_CONFIGS.SEPOLIA,
         BASE_GOERLI: NETWORK_CONFIGS.BASE_GOERLI,
         BASE_SEPOLIA: NETWORK_CONFIGS.BASE_SEPOLIA,
         /* Mainnet */
@@ -37,6 +38,8 @@ const config: HardhatUserConfig = {
     },
     etherscan: {
         apiKey: {
+          /* ETHEREUM */
+            sepolia: process.env.ETHEREUM_API_KEY,
           /* BASE */
             baseGoerli: process.env.BASE_API_KEY,
             baseSepolia: process.env.BASE_API_KEY,

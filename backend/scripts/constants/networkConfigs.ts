@@ -28,6 +28,14 @@ const getAccounts = function () {
 
 export const NETWORK_CONFIGS: NetworkConfigs = {
     /* Testnet */
+    SEPOLIA: {
+      chainId: 11155111,
+      gas: 9000000,
+      gasPrice: 67000000000,
+      url: process.env.SEPOLIA_URL || '',
+      accounts: getAccounts(),
+      nativeDecimals: 18,
+    },
     BASE_GOERLI: {
         chainId: 84531,
         gas: 9000000,

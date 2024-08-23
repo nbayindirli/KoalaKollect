@@ -11,12 +11,14 @@ declare global {
             PRIVATE_KEY_2: string;
 
             /* TESTNET */
+            SEPOLIA_URL: string;
             BASE_GOERLI_URL: string;
             BASE_SEPOLIA_URL: string;
             /* MAINNET */
             BASE_URL: string;
 
             /* etherscan */
+            ETHEREUM_API_KEY: string
             BASE_API_KEY: string
         }
     }

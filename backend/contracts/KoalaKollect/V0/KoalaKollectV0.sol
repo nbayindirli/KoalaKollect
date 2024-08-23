@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract KoalaKollect {
+contract KoalaKollectV0 {
     struct Pool {
         address creator;
         uint256 goal;
