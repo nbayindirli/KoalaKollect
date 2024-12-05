@@ -1,18 +1,27 @@
 import type { Config } from "tailwindcss";
+import forms from '@tailwindcss/forms';
 
-export default {
+const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/**/*.{js,ts,jsx,tsx,mdx}',  // This will catch all files in src
+    './pages/**/*.{js,ts,jsx,tsx,mdx}', // This will catch all files in pages
+    './components/**/*.{js,ts,jsx,tsx,mdx}', // This will catch all files in components
+    './app/**/*.{js,ts,jsx,tsx,mdx}', // This will catch all files in app
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
-    },
+        koala: {
+          gray: '#E6E6E6',    // Light gray from koala body
+          black: '#2D3436',   // Dark gray/black from koala features
+          green: '#27AE60',   // Green from eucalyptus leaves
+        }
+      }
+    }
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [
+    forms,
+  ],
+}
+
+export default config;

@@ -12,8 +12,19 @@ interface IKoalaKollectV1 {
 
     /**
      * Creates a new pool.
+     * @param targetTotalFundAmount The target amount to raise
+     * @param fundAssetAddress The token address (use address(0) for native ETH)
+     * @param fundAssetDecimals The decimals of the fund asset
+     * @param targetDate The deadline timestamp for the pool
+     * @param canOverfund Whether the pool can accept funds beyond the target
      */
-    function createPool() external;
+    function createPool(
+        uint256 targetTotalFundAmount,
+        address fundAssetAddress,
+        uint256 fundAssetDecimals,
+        uint256 targetDate,
+        bool canOverfund
+    ) external;
 
     /**
      * Prematurely closes a pool and refunds all koalas.

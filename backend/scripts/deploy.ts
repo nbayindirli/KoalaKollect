@@ -1,13 +1,14 @@
 import { ethers } from "hardhat";
 import { ContractFactory } from "ethers";
-import { KoalaKollectV0__factory } from "../typechain-types";
+import { KoalaKollectV0__factory, KoalaKollectV1__factory } from "../typechain-types";
 
 async function main() {
   console.log("Deploying YourContract...");
 
   // Get the ContractFactory and Signer
   const [deployer] = await ethers.getSigners();
-  const koalaKollectFactory: KoalaKollectV0__factory = await ethers.getContractFactory("KoalaKollectV0") as KoalaKollectV0__factory;
+//   const koalaKollectFactory: KoalaKollectV0__factory = await ethers.getContractFactory("KoalaKollectV0") as KoalaKollectV0__factory;
+  const koalaKollectFactory: KoalaKollectV1__factory = await ethers.getContractFactory("KoalaKollectV1") as KoalaKollectV1__factory;
 
   // Deploy the contract
   const koalaKollectContract = await koalaKollectFactory.deploy();
