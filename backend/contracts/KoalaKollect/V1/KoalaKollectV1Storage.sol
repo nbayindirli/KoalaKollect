@@ -27,16 +27,24 @@ abstract contract KoalaKollectV1Storage is AdminControl {
     mapping(uint256 /* poolId */ => Pool /* pool */) pools;
 
     struct Creator {
+        bool isRegistered;
+        uint256 createdAt;
         uint256[] poolIds;
     }
 
     mapping(address /* creatorAddress */ => bool /* isRegistered */) isRegisteredCreator;
     mapping(address /* creatorAddress */ => Creator /* creator */) creators;
 
+    mapping(address /* creatorAddress */ => Creator /* creator */) internal _creators;
+
     struct Koala {
+        bool isRegistered;
+        uint256 createdAt;
         uint256[] poolIds;
     }
 
     mapping(address /* koalaAddress */ => bool /* isRegistered */) isRegisteredKoala;
     mapping(address /* koalaAddress */ => Koala /* koala */) koalas;
+
+    mapping(address /* koalaAddress */ => Koala /* koala */) internal _koalas;
 }

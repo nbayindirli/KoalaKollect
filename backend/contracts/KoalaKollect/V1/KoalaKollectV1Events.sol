@@ -11,4 +11,5 @@ abstract contract KoalaKollectV1Events {
     event FundedPool(uint256 indexed poolId, address indexed koala, uint256 fundAmount);
     event OverfundedPool(uint256 indexed poolId, address indexed koala, uint256 fundAmount);
     event SetAuthority(address indexed authority);
+    event CreatorRegistered(address indexed creator, uint256 timestamp);
 }

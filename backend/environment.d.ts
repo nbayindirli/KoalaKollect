@@ -19,7 +19,7 @@ declare global {
 
             /* etherscan */
             ETHEREUM_API_KEY: string
-            BASE_API_KEY: string
+            BASESCAN_API_KEY: string
         }
     }
 }

@@ -1,24 +1,24 @@
 'use client';
 
 import { useReadContract } from 'wagmi';
-import { KOALA_KOLLECT_ADDRESS, KOALA_KOLLECT_ABI } from '@/constants/contracts';
+import { KOALA_KOLLECT_V1_ADDRESS, KOALA_KOLLECT_V1_ABI } from '@/constants/contracts';
 import { useAccount } from 'wagmi';
 
 export function useKoalaKollect() {
   const { address } = useAccount();
   
-  const { data: isCreator } = useReadContract({
-    address: KOALA_KOLLECT_ADDRESS,
-    abi: KOALA_KOLLECT_ABI,
+  const { data: isCreator = false } = useReadContract({
+    address: KOALA_KOLLECT_V1_ADDRESS,
+    abi: KOALA_KOLLECT_V1_ABI,
     functionName: 'isRegisteredCreator',
     args: [address],
     enabled: Boolean(address),
     watch: true,
   });
 
-  const { data: isKoala } = useReadContract({
-    address: KOALA_KOLLECT_ADDRESS,
-    abi: KOALA_KOLLECT_ABI,
+  const { data: isKoala = false } = useReadContract({
+    address: KOALA_KOLLECT_V1_ADDRESS,
+    abi: KOALA_KOLLECT_V1_ABI,
     functionName: 'isRegisteredKoala',
     args: [address],
     enabled: Boolean(address),
@@ -26,7 +26,7 @@ export function useKoalaKollect() {
   });
 
   return {
-    isCreator: isCreator || false,
-    isKoala: isKoala || false,
+    isCreator: Boolean(isCreator),
+    isKoala: Boolean(isKoala),
   };
 } 

@@ -18,13 +18,19 @@ contract KoalaKollectV1 is
      * Used to register a new creator.
      */
     function registerCreator() external override {
-        if (isRegisteredCreator[msg.sender]) revert("Already registered as creator");
-        if (isRegisteredKoala[msg.sender]) revert("Already registered as koala");
-
+        require(!_creators[msg.sender].isRegistered, "Already registered as creator");
+        require(!_koalas[msg.sender].isRegistered, "Already registered as koala");
+        
+        _creators[msg.sender] = Creator({
+            isRegistered: true,
+            createdAt: block.timestamp,
+            poolIds: new uint256[](0)
+        });
+        
         isRegisteredCreator[msg.sender] = true;
-        creators[msg.sender].poolIds = new uint256[](0);
-
-        emit RegisteredCreator(msg.sender);
+        creators[msg.sender] = _creators[msg.sender];
+        
+        emit CreatorRegistered(msg.sender, block.timestamp);
     }
 
     /**

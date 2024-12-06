@@ -1,3 +1,5 @@
+'use client';
+
 import { HomeClient } from './page-client';
 
 export default function Home() {

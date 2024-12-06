@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
-import { ContractFactory } from "ethers";
-import { KoalaKollectV0__factory, KoalaKollectV1__factory } from "../typechain-types";
+import hre from "hardhat";
+import { KoalaKollectV1__factory } from "../typechain-types";
 
 async function main() {
   console.log("Deploying YourContract...");
@@ -16,28 +16,31 @@ async function main() {
   if (tx) {
     const receipt = await tx.wait();
     if (receipt) {
-      console.log(`TX receipt hash: ${receipt.hash}`);
-      console.log(`Contract Address: ${await koalaKollectContract.getAddress()}`);
-      console.log(`Deployed by: ${deployer.address}`);
+      console.log(`✅ TX receipt hash: ${receipt.hash}`);
+      console.log(`✅ Contract Address: ${await koalaKollectContract.getAddress()}`);
+      console.log(`✅ Deployed by: ${deployer.address}`);
     }
   }
 
-  // Verify the contract on Etherscan
-  // Note: This requires setting up your Etherscan API key in the Hardhat config
-  // if (process.env.ETHERSCAN_API_KEY) {
-  //   console.log("Verifying contract on Etherscan...");
-  //   await yourContract.deployTransaction.wait(6);  // wait for 6 block confirmations
-  //   await hre.run("verify:verify", {
-  //     address: yourContract.address,
-  //     constructorArguments: [],  // Add constructor arguments here if your contract has any
-  //   });
-  //   console.log("Contract verified on Etherscan");
-  // }
-  return;
+  const koalaKollectAddress = await koalaKollectContract.getAddress();
+
+  console.log("✅ KoalaKollect deployed to:", koalaKollectAddress);
+
+  // Add delay to let Base Sepolia index the deployment
+  console.log("⏳ Waiting for 15 seconds before verification...");
+  await new Promise(resolve => setTimeout(resolve, 15000));
+
+  try {
+    await hre.run('verify:verify', {
+        address: koalaKollectAddress,
+        constructorArguments: []
+    });
+    console.log("✅ Contract verification successful");
+  } catch (error) {
+    console.log("❌ Contract verification failed:", error);
+  }
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
