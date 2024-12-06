@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50" suppressHydrationWarning>
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -17,6 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   fill
                   className="object-contain"
                   priority
+                  sizes="40px"
                 />
               </div>
               <span className="ml-2 text-xl font-semibold text-gray-900">

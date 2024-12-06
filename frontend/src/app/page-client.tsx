@@ -1,13 +1,23 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Layout from '@/components/Layout';
 import { PoolList } from '@/components/PoolList';
 import { CreatePoolForm } from '@/components/CreatePoolForm';
 import { useKoalaKollect } from '@/hooks/useKoalaKollect';
 import { RegisterButtons } from '@/components/RegisterButtons';
 
-export default function HomeClient() {
+export function HomeClient() {
+  const [mounted, setMounted] = useState(false);
   const { isCreator, isKoala } = useKoalaKollect();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null; // or a loading state
+  }
 
   return (
     <Layout>
